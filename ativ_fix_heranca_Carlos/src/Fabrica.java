@@ -1,3 +1,5 @@
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -8,6 +10,7 @@ class Fabrica {
         //Criação do objeto responsavél por ler a informação digitado pelo úsuario
         Scanner scan = new Scanner(System.in);
         Carro veiculo = new Carro();
+        InputStreamReader input = new InputStreamReader(System.in);
         //Solicitando informação ao Usuario
         int fechar = 0;
         while (fechar != 2) {
@@ -66,11 +69,12 @@ class Fabrica {
                     break;
             }
 
+            System.out.println();
             System.out.flush();
             for (int i = 0; i < veiculo.listVeiculo.size(); i++) {
                 if (veiculo.listVeiculo.get(i) instanceof Carro) {
                     Carro carro = (Carro) veiculo.listVeiculo.get(i);
-                    System.out.println("Dados do Carro " + i + ":");
+                    System.out.println("\nDados do Carro " + i + ":");
                     System.out.println("Modelo: " + carro.getModelo());
                     System.out.println("Ano: " + carro.getAno());
                     System.out.println("Cor: " + carro.getCor());
@@ -79,7 +83,7 @@ class Fabrica {
                     System.out.println("");
                 } else if (veiculo.listVeiculo.get(i) instanceof Moto) {
                     Moto moto = (Moto) veiculo.listVeiculo.get(i);
-                    System.out.println("Dados da moto " + i + ":");
+                    System.out.println("\nDados da moto " + i + ":");
                     System.out.println("Modelo: " + moto.getModelo());
                     System.out.println("Ano: " + moto.getAno());
                     System.out.println("Cor: " + moto.getCor());
@@ -87,6 +91,11 @@ class Fabrica {
                     System.out.println("Valor: " + moto.getValor());
                     System.out.println("");
                 }
+            }
+            try {
+                input.read();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
             System.out.print("Deseja remover algum veículo da lista? '1 = Sim, 2 = Não': ");
             int decisao = scan.nextInt();

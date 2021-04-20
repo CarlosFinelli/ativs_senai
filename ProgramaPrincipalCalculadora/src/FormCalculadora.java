@@ -33,5 +33,4 @@ public class FormCalculadora extends JFrame {
         container.add(btnCalcular);
         container.add(lbResultado);
     }
-
 }
